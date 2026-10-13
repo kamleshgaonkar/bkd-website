@@ -8,6 +8,7 @@ test('desktop homepage loads local imagery and expertise interaction', async ({ 
   await expect(page.locator('main section')).toHaveCount(6);
   await page.locator('#projects').scrollIntoViewIfNeeded();
   await expect(page.locator('.project')).toHaveCount(3);
+  await page.locator('footer').scrollIntoViewIfNeeded();
   await expect.poll(() => page.locator('img').evaluateAll(images => images.every(image => image instanceof HTMLImageElement && image.complete && image.naturalWidth > 0))).toBe(true);
   await page.locator('#expertise').scrollIntoViewIfNeeded();
   await page.getByText('Commercial Kitchen Planning', { exact: true }).click();

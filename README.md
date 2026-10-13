@@ -30,6 +30,6 @@ The smoke tests start a production server when needed. They use `/usr/bin/chromi
 
 ### Content and visual review
 
-`src/content/studio.ts` contains navigation, expertise, process and replaceable project data. All projects are clearly labelled fictional placeholders; local generated image provenance is documented in `public/images/README.md`. Replace these with approved photography and project information before publication. Contact information is deliberately left unconfigured. The project discussion CTA leads to that visible contact placeholder; it does not submit a form or send a message.
+`src/content/studio.ts` contains navigation, expertise, process and replaceable project data. All projects are clearly labelled fictional placeholders; local generated image provenance is documented in `public/images/README.md`. Replace these with approved photography and project information before publication. Official contact information is stored in `src/content/studio.ts`. The project discussion CTA opens an email; telephone and WhatsApp links are available in the closing section and footer. The original supplied SVG branding assets are preserved in `public/images/branding/`.
 
 Motion is isolated in `src/components/motion.tsx`, respects reduced motion and cleans up GSAP contexts. Browser tests cover desktop imagery, expandable expertise, mobile navigation and overflow, keyboard skip navigation, and reduced-motion rendering.

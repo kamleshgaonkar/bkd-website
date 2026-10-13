@@ -21,3 +21,13 @@ export const process = [
   { title: 'Design', description: 'Refine the layout, equipment and technical details into one coherent plan.' },
   { title: 'Deliver', description: 'Bring clarity to execution through coordinated drawings and consultancy.' },
 ];
+
+export const contact = {
+  company: 'Brainstorm Kitchen Design',
+  email: 'brainstormkitchendesign@gmail.com',
+  emailHref: 'mailto:brainstormkitchendesign@gmail.com',
+  phone: '+91 98216 64343',
+  phoneHref: 'tel:+919821664343',
+  whatsappHref: 'https://wa.me/919821664343',
+  address: ['Plot - B, A Wing, 201,', 'Govardhan Compelex,', 'Caves Road, Jogeshwari East,', 'Mumbai - 400 060,', 'Maharashtra, India.'],
+};

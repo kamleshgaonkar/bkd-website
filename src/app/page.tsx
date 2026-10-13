@@ -3,7 +3,8 @@ import { ArrowDown, ArrowUpRight, Plus } from 'lucide-react';
 import { Navigation } from '@/components/navigation';
 import { Motion } from '@/components/motion';
 import { FloorPlan } from '@/components/floor-plan';
-import { expertise, navigation, process, projects } from '@/content/studio';
+import { BrandLogo } from '@/components/brand-logo';
+import { contact, expertise, navigation, process, projects } from '@/content/studio';
 function Label({ number, children }: { number: string; children: React.ReactNode }) { return <p className="section-label"><span>{number}</span>{children}</p>; }
 export default function Home() {
   return <>
@@ -20,8 +21,16 @@ export default function Home() {
       <section id="expertise" className="expertise section-pad"><Label number="03">OUR EXPERTISE</Label><div className="section-heading" data-reveal><h2>From possibility<br />to <span className="serif">precision.</span></h2><p>A complete perspective.<br />A considered solution.</p></div><div className="expertise-list">{expertise.map((item, index) => <details className="expertise-row" key={item.title} data-reveal><summary><span className="row-number">0{index + 1}</span><h3>{item.title}</h3><Plus className="detail-icon" size={22} /></summary><p>{item.description}</p></details>)}</div></section>
       <section id="projects" className="projects section-pad"><Label number="04">SELECTED PROJECTS</Label><div className="section-heading" data-reveal><h2>Spaces with<br /><span className="serif">a point of view.</span></h2><p>An exploration of what’s possible.<br />Concept imagery, awaiting real stories.</p></div><div className="project-grid">{projects.map(project => <article className="project" key={project.number} data-reveal><div className="project-image"><Image src={project.image} alt={project.alt} fill sizes="(max-width: 767px) 100vw, 33vw" style={{ objectPosition: project.position }} className="object-cover" /><span className="project-tag">PLACEHOLDER PROJECT</span></div><div className="project-title"><span>{project.number}</span><h3>{project.title}</h3><ArrowUpRight size={19} aria-hidden="true" /></div><p>{project.category}</p></article>)}</div><p className="project-disclaimer">These fictional concept studies use generated imagery and do not represent completed BKD projects or clients.</p></section>
       <section id="process" className="process section-pad"><Label number="05">THE DESIGN PROCESS</Label><h2 data-reveal>A clear path.<br /><span className="serif">A shared vision.</span></h2><div className="process-grid">{process.map((step, index) => <article key={step.title} data-reveal><span className="process-number">0{index + 1}</span><h3>{step.title}</h3><p>{step.description}</p></article>)}</div></section>
-      <section className="closing section-pad"><Label number="06">THE NEXT CHAPTER</Label><div data-reveal><h2>Let’s Design<br />What Comes <span className="serif">Next.</span></h2><a href="#contact" className="closing-link">Discuss Your Project <ArrowUpRight size={26} /></a></div><span className="closing-watermark" aria-hidden="true">bkd</span></section>
+      <section className="closing section-pad"><Label number="06">THE NEXT CHAPTER</Label><div data-reveal><h2>Let’s Design<br />What Comes <span className="serif">Next.</span></h2><a href={contact.emailHref} className="closing-link">Discuss Your Project <ArrowUpRight size={26} /></a><div className="closing-contact-links"><a href={contact.emailHref}>{contact.email}</a><a href={contact.phoneHref}>{contact.phone}</a><a href={contact.whatsappHref} target="_blank" rel="noopener noreferrer">WhatsApp <ArrowUpRight size={14} /></a></div></div></section>
     </main>
-    <footer id="contact" className="footer section-pad"><div className="footer-top"><div><a className="wordmark" href="#top" aria-label="Back to top">bkd<span>·</span></a><p>Brainstorm Kitchen Design<br />Commercial kitchen design & consultancy.</p></div><nav aria-label="Footer navigation">{navigation.map(item => <a href={item.href} key={item.href}>{item.label}</a>)}<a href="#process">Our process</a></nav><div className="contact-placeholder"><span className="eyebrow">START A CONVERSATION</span><p>Contact details coming soon.</p><span>Official email, phone and studio address<br />will be added here once confirmed.</span></div></div><div className="footer-bottom"><span>© 2026 Brainstorm Kitchen Design</span><span>FORM. FLOW. FUNCTION.</span><a href="#top">BACK TO TOP ↑</a></div></footer>
+    <footer id="contact" className="footer section-pad">
+      <div className="footer-top">
+        <div className="footer-brand"><a href="#top" aria-label="Back to top"><BrandLogo /></a><p>{contact.company}<br />Commercial kitchen design & consultancy.</p></div>
+        <nav aria-label="Footer navigation">{navigation.map(item => <a href={item.href} key={item.href}>{item.label}</a>)}<a href="#process">Our process</a></nav>
+        <div className="footer-contact"><span className="eyebrow">START A CONVERSATION</span><a href={contact.emailHref}>{contact.email}</a><a href={contact.phoneHref}>{contact.phone}</a><a className="whatsapp-link" href={contact.whatsappHref} target="_blank" rel="noopener noreferrer">Connect on WhatsApp <ArrowUpRight size={14} /></a></div>
+        <div className="footer-office"><span className="eyebrow">OUR OFFICE</span><address>{contact.address.map(line => <span key={line}>{line}</span>)}</address></div>
+      </div>
+      <div className="footer-bottom"><span>© 2026 {contact.company}</span><span>FORM. FLOW. FUNCTION.</span><a href="#top">BACK TO TOP ↑</a></div>
+    </footer>
   </>;
 }
